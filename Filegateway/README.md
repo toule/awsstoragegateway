@@ -15,7 +15,10 @@
 ![hosttype](images/hosttype.png)
 
 - 주의점
-  - 인스턴스는 xlarge 이상으로 하는 것을 권장함 (vCPUs 4이상, Memory 16이상, 캐시용 EBS는 150이상)
+
+  - 인스턴스는 xlarge 이상으로 하는 것을 권장함 (vCPUs 4이상, Memory 16Gib이상, 캐시용 EBS는 150이상)
+
+  ![recommand](images/recommand.png)
 
 ![AMI](images/ami.png)
 
@@ -65,6 +68,8 @@ NFS(111, 2049, 20048) : 파일 공유 데이터 전송
 
 ![connect](images/connect.png)
 
+- VM public IP 기입
+
 
 
 ### Active
@@ -83,6 +88,8 @@ NFS(111, 2049, 20048) : 파일 공유 데이터 전송
 
 ![loggroup](images/loggroup.png)
 
+- 로그 그룹 설정
+
 
 
 ### Confirm Gateway
@@ -99,7 +106,7 @@ NFS(111, 2049, 20048) : 파일 공유 데이터 전송
 
 ![stores3](images/stores3.png)
 
-
+- S3 Intelligent-Tiering : 데이터를 가장 비용 효율적인 스토리지 접근 티어로 자동으로 이동 (128KB 미만의 객체는 제외)
 
 ### Confirm File share
 
@@ -113,7 +120,13 @@ NFS(111, 2049, 20048) : 파일 공유 데이터 전송
 
 ![admin](images/admin.png)
 
+- admin으로 접속할 때 다음과 같이 확인 가능
+
 #### Windows
+
+```bash
+mount -o nolock -o mtype=hard <VM-IP>:/<S3-Bucket-PATH> [WindowsDriveLetter]:
+```
 
 ![windows-mount](images/windows-mount.png)
 
@@ -123,4 +136,12 @@ NFS(111, 2049, 20048) : 파일 공유 데이터 전송
 
 #### Linux
 
+```bash
+mount -t nfs -o nolock,hard <VM-IP>:/<S3-Bucket-PATH> [MountPath]
+```
+
 ![linux-result](images/linux-result.png)
+
+#### Monitoring
+
+![monitoring](images/monitoring.png)
