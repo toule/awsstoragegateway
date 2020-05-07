@@ -132,6 +132,8 @@ mount -o nolock -o mtype=hard <VM-IP>:/<S3-Bucket-PATH> [WindowsDriveLetter]:
 
 ![windows-result](images/windows-result.png)
 
+- Windows에서 동작을 확인하기 위해서는 NFS 설정을 활성화 해야함
+
 
 
 #### Linux
@@ -145,3 +147,14 @@ mount -t nfs -o nolock,hard <VM-IP>:/<S3-Bucket-PATH> [MountPath]
 #### Monitoring
 
 ![monitoring](images/monitoring.png)
+
+
+
+## 인프라 삭제
+
+1. File Share 설정 삭제
+2. Gateway 삭제
+3. VM 삭제
+4. Security Group 삭제
+
+추가: 기존에 Elastic IP를 만들었다면 Release 해야함
